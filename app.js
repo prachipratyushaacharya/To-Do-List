@@ -4,35 +4,35 @@ const addTask = () => {
     const taskInput = document.getElementById('taskInput');
     const text = taskInput.value.trim();
 
-
     if(text){
-        tasks.push({tex: text, completed: false });
-        taskInput.value = "";
+        tasks.push({text: text, completed: false });
+        // taskInput.value = "";
         updateTasksList();
     }
 };
 
+
 const updateTasksList = () => {
-    const taskList = document.getElementById('task-list');
-    taskList.innerHTML = ''
+    const taskList = document.getElementById("task-list");
+    taskList.innerHTML = "";
 
     tasks.forEach((task,index) =>{
         const listItem = document.createElement("li");
 
         listItem.innerHTML = `
         <div class = "taskItem">
-            <div class="task $ {task.completed ? "completed": ""}">
-                <input type= "checkbox" class="checkbox" $ {task.completed ? "checked" : ""} />
-                <p> $ {task.text} </p>
+            <div class="task ${task.completed ? "completed": ""}">
+                <input type= "checkbox" class="checkbox ${task.completed ? "checked" : ""}" />
+                <p>${task.text}</p>
             </div>
             <div class= "icons">
-                <img src= "./TO-DO APP/edit-icon.png" onClick= "editTask(${index})" />
-                <img src= "./TO-DO APP/bin-icon.png" onClick= "deleteTask(${index})"/>
+                <img src= "./edit-icon.png" onClick= "editTask(${index})" />
+                <img src= "./bin-icon.png" onClick= "deleteTask(${index})"/>
             </div>
         </div>
         `;
-        listItem.addEventListener("change", ()=> toggleTastComplete(index));
-        taskList.append(ListItem);
+        listItem.addEventListener("change", ()=> toggleTaskComplete(index));
+        taskList.append(listItem);
     });
 };
 
