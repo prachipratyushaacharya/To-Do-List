@@ -1,3 +1,12 @@
+document.addEventListener("DOMContentLoaded", ()=>{
+    const storedTasks = JSON.parse(localStorage.getItem('tasks'));
+
+    if (storedTasks){
+        storedTasks.forEach((t) => tasks.push(t));
+        updateTasksList();
+        updateStats();
+    }
+})
 let tasks = [];
 
 const saveTasks= () => {
